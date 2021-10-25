@@ -5,63 +5,57 @@ class Form extends Component {
   state = {
     name: '',
     tag: '',
-    experience: 'junior',
+    experience: 'middle',
     licence: false,
   };
-
+  handleLicenceChange = e => {
+    console.log(e.currentTarget.checked);
+    this.setState({ licence: e.currentTarget.checked });
+  };
   nameInputId = shortid.generate();
   tagInputId = shortid.generate();
 
   handleChange = e => {
     const { name, value } = e.currentTarget;
-
     this.setState({ [name]: value });
   };
-
   handleSubmit = e => {
     e.preventDefault();
-
     this.props.onSubmit(this.state);
-
     this.reset();
   };
-
-  handleLicenceChange = e => {
-    console.log(e.currentTarget.checked);
-
-    this.setState({ licence: e.currentTarget.checked });
-  };
-
   reset = () => {
-    this.setState({ name: '', tag: '' });
+    this.setState({
+      name: '',
+      tag: '',
+      experience: 'junior',
+      licence: false,
+    });
   };
-
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor={this.nameInputId}>
-          Имя
+          Імя{' '}
           <input
-            type="text"
             name="name"
+            type="text"
             value={this.state.name}
             onChange={this.handleChange}
             id={this.nameInputId}
-          />
+          ></input>
         </label>
-        <br />
         <label htmlFor={this.tagInputId}>
-          Прозвище
+          Прізвище{' '}
           <input
-            type="text"
             name="tag"
+            type="text"
             value={this.state.tag}
             onChange={this.handleChange}
             id={this.tagInputId}
-          />
+          ></input>
         </label>
-
-        <p>Ваш уровень:</p>
+        <p> Ваш рівень розробника</p>
         <label>
           <input
             type="radio"
@@ -72,7 +66,6 @@ class Form extends Component {
           />
           Junior
         </label>
-
         <label>
           <input
             type="radio"
@@ -93,25 +86,22 @@ class Form extends Component {
           />
           Senior
         </label>
-
         <br />
-
         <label>
           <input
             type="checkbox"
-            name="licence"
+            name=""
             checked={this.state.licence}
             onChange={this.handleLicenceChange}
           />
-          Согласен с условием
+          Готовий працювати за їжу{' '}
         </label>
 
         <button type="submit" disabled={!this.state.licence}>
-          Отправить
+          Відправити{' '}
         </button>
       </form>
     );
   }
 }
-
 export default Form;
