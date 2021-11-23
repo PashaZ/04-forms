@@ -1,82 +1,82 @@
 import React, { Component } from 'react';
-import shortid from 'shortid';
+// import shortid from 'shortid';
 // import ColorPicker from './components/ColorPicker';
 // import Counter from './components/Counter';
 import Container from './components/Container';
-import TodoList from './components/TodoList';
-import TodoEditor from './components/TodoEditor';
-import Filter from './components/Filter';
+// import TodoList from './components/TodoList';
+// import TodoEditor from './components/TodoEditor';
+// import Filter from './components/Filter';
 // import Form from './components/Form';
 import initialTodos from './todos.json';
 
 class App extends Component {
   state = {
     todos: initialTodos,
-    filter: '',
+    // filter: '',
   };
 
-  addTodo = text => {
-    const todo = {
-      id: shortid.generate(),
-      text,
-      completed: false,
-    };
+  // addTodo = text => {
+  //   const todo = {
+  //     id: shortid.generate(),
+  //     text,
+  //     completed: false,
+  //   };
 
-    this.setState(({ todos }) => ({
-      todos: [todo, ...todos],
-    }));
-  };
+  //   this.setState(({ todos }) => ({
+  //     todos: [todo, ...todos],
+  //   }));
+  // };
 
-  deleteTodo = todoId => {
-    this.setState(prevState => ({
-      todos: prevState.todos.filter(todo => todo.id !== todoId),
-    }));
-  };
+  // deleteTodo = todoId => {
+  //   this.setState(prevState => ({
+  //     todos: prevState.todos.filter(todo => todo.id !== todoId),
+  //   }));
+  // };
 
-  toggleCompleted = todoId => {
-    this.setState(({ todos }) => ({
-      todos: todos.map(todo =>
-        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo,
-      ),
-    }));
-  };
+  // toggleCompleted = todoId => {
+  //   this.setState(({ todos }) => ({
+  //     todos: todos.map(todo =>
+  //       todo.id === todoId ? { ...todo, completed: !todo.completed } : todo,
+  //     ),
+  //   }));
+  // };
 
-  changeFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
-  };
+  // changeFilter = e => {
+  //   this.setState({ filter: e.currentTarget.value });
+  // };
 
-  getVisibleTodos = () => {
-    const { filter, todos } = this.state;
-    const normalizedFilter = filter.toLowerCase();
+  // getVisibleTodos = () => {
+  //   const { filter, todos } = this.state;
+  //   const normalizedFilter = filter.toLowerCase();
 
-    return todos.filter(todo =>
-      todo.text.toLowerCase().includes(normalizedFilter),
-    );
-  };
+  //   return todos.filter(todo =>
+  //     todo.text.toLowerCase().includes(normalizedFilter),
+  //   );
+  // };
 
-  calculateCompletedTodos = () => {
-    const { todos } = this.state;
+  // calculateCompletedTodos = () => {
+  //   const { todos } = this.state;
 
-    return todos.reduce(
-      (total, todo) => (todo.completed ? total + 1 : total),
-      0,
-    );
-  };
+  //   return todos.reduce(
+  //     (total, todo) => (todo.completed ? total + 1 : total),
+  //     0,
+  //   );
+  // };
 
   render() {
-    const { todos, filter } = this.state;
-    const totalTodoCount = todos.length;
-    const completedTodoCount = this.calculateCompletedTodos();
-    const visibleTodos = this.getVisibleTodos();
+    // const { todos, filter } = this.state;
+    // const totalTodoCount = todos.length;
+    // const completedTodoCount = this.calculateCompletedTodos();
+    // const visibleTodos = this.getVisibleTodos();
 
     return (
       <Container>
         <div>
-          <p>Всего заметок: {totalTodoCount}</p>
-          <p>Выполнено: {completedTodoCount}</p>
+          {/* <p>Всего заметок: {totalTodoCount}</p>
+          <p>Выполнено: {completedTodoCount}</p> */}
         </div>
 
-        <TodoEditor onSubmit={this.addTodo} />
+        {/* <TodoEditor onSubmit={this.addTodo} />
 
         <Filter value={filter} onChange={this.changeFilter} />
 
@@ -84,7 +84,7 @@ class App extends Component {
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
       </Container>
     );
   }
